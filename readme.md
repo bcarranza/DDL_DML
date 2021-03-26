@@ -46,8 +46,7 @@
 |DATETIME(fsp)|	A date and time combination. Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1000-01-01 00:00:00' to '9999-12-31 23:59:59'. Adding DEFAULT and ON UPDATE in the column definition to get automatic initialization and updating to the current date and time|
 |TIMESTAMP(fsp)|	A timestamp. TIMESTAMP values are stored as the number of seconds since the Unix epoch ('1970-01-01 00:00:00' UTC). Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC. Automatic initialization and updating to the current date and time can be specified using DEFAULT |CURRENT_TIMESTAMP and ON UPDATE CURRENT_TIMESTAMP in the column definition|
 |TIME(fsp)|	A time. Format: hh:mm:ss. The supported range is from '-838:59:59' to '838:59:59'|
-|YEAR|	A year in four-digit format. Values allowed in four-digit format: 1901 to 2155, and 0000.
-MySQL 8.0 does not support year in two-digit format.|
+|YEAR|	A year in four-digit format. Values allowed in four-digit format: 1901 to 2155, and 0000. MySQL 8.0 does not support year in two-digit format.|
 
 # DDL (Data Definition Lenguage)-(Relacionado con Estructura)
 ### Definición: 
@@ -82,8 +81,47 @@ use db_umg_introsis;
 ~~~
 
 
-Tablas:
+###Interacción con Tablas:
 Crear una nueva tabla.
+~~~
+CREATE TABLE CITY
+(
+ID INT,
+NAME VARCHAR(17),
+COUNTRYCODE VARCHAR(3),
+DISTRICT VARCHAR(20),
+POPULATION INT
+)
+~~~
+Eliminar dos columanas para posteriormente normalizar.
+~~~
+ALTER TABLE CITY
+DROP COLUMN COUNTRYCODE
+
+ALTER TABLE CITY
+DROP COLUMN DISTRICT
+~~~
+Crear dos tablas nuevas: Pais y Distrito
+~~~
+CREATE TABLE COUNTRY
+(
+ID INT,
+NAME VARCHAR(17),
+COUNTRYCODE VARCHAR(3)
+)
+~~~
+CREATE TABLE DISTRICT
+(
+ID INT,
+NAME VARCHAR(17),
+ID_PAIS INT
+)
+~~~
+Crear una nueva columna a ciudad 
+~~~
+ALTER TABLE CITY
+ADD COLUMN ID_DISTRICT INT
+~~~
 
 
 
