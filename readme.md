@@ -1,4 +1,4 @@
-# DDL (Relacionado con Estructura)
+# DDL (Data Definition Lenguage)-(Relacionado con Estructura)
 ### Definición: 
 Sentencias DDL son aquellas utilizadas para la creación de una base de datos y todos sus componentes: tablas, índices, relaciones, disparadores (triggers), procedimientos almacenados, etc
 
@@ -6,8 +6,21 @@ Sentencias DDL son aquellas utilizadas para la creación de una base de datos y 
 - ALTER
 - DROP
 
+### CREATE: 
+Es un elemento básico de creación de nuevos componentes en nuestra base de datos; entre los más comunes tenemos:
 
-# DML (Releacionado con interacción con datos)
+- CREATE DATABASE
+- CREATE TABLE
+- CREATE INDEX
+
+Ejemplo 
+~~~
+CREATE DATABASE db_umg_introsis;
+~~~
+
+
+
+# DML (Data Manipulation Language)-(Releacionado con interacción con datos)
 ### Definición:  
 DML son aquellas sentencias utilizadas para insertar, borrar, modificar y consultar los datos de una base de datos
 
