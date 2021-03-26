@@ -115,7 +115,7 @@ CREATE TABLE DISTRICT
 (
 ID INT,
 NAME VARCHAR(17),
-ID_PAIS INT,
+ID_COUNTRY INT,
 PRIMARY KEY (ID)
 );
 ~~~
@@ -130,7 +130,7 @@ Se deben de crear primero los indices.
 ~~~
 CREATE INDEX IX_Relationship1 ON CITY (ID_DISTRICT);
 
-CREATE INDEX IX_Relationship2 ON DISTRICT (ID_PAIS);
+CREATE INDEX IX_Relationship2 ON DISTRICT (ID_COUNTRY);
 ~~~
 
 Creación de constraints
