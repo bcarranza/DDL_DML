@@ -13,11 +13,14 @@ Es un elemento básico de creación de nuevos componentes en nuestra base de dat
 - CREATE TABLE
 - CREATE INDEX
 
-Ejemplo 
+Crear una base de datos nueva.
 ~~~
 CREATE DATABASE db_umg_introsis;
 ~~~
-
+Borrar una base de datos existente
+~~~
+CREATE DATABASE db_umg_introsis;
+~~~
 
 
 # DML (Data Manipulation Language)-(Releacionado con interacción con datos)
