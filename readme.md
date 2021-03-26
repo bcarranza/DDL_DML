@@ -90,7 +90,8 @@ ID INT,
 NAME VARCHAR(17),
 COUNTRYCODE VARCHAR(3),
 DISTRICT VARCHAR(20),
-POPULATION INT
+POPULATION INT,
+PRIMARY KEY (ID)
 )
 ~~~
 Eliminar dos columanas para posteriormente normalizar.
@@ -107,14 +108,16 @@ CREATE TABLE COUNTRY
 (
 ID INT,
 NAME VARCHAR(17),
-COUNTRYCODE VARCHAR(3)
-)
+COUNTRYCODE VARCHAR(3),
+PRIMARY KEY (ID)
+);
 CREATE TABLE DISTRICT
 (
 ID INT,
 NAME VARCHAR(17),
-ID_PAIS INT
-)
+ID_PAIS INT,
+PRIMARY KEY (ID)
+);
 ~~~
 Crear una nueva columna a ciudad 
 ~~~
@@ -122,7 +125,30 @@ ALTER TABLE CITY
 ADD COLUMN ID_DISTRICT INT
 ~~~
 
+Creación de relaciones. 
+Se deben de crear primero los indices.
+~~~
+CREATE INDEX IX_Relationship1 ON CITY (ID_DISTRICT);
 
+CREATE INDEX IX_Relationship2 ON DISTRICT (ID_PAIS);
+~~~
+
+Creación de constraints
+~~~ 
+ALTER TABLE CITY
+ADD CONSTRAINT Relationship1 FOREIGN KEY (ID_DISTRICT) REFERENCES DISTRICT (ID) ON DELETE RESTRICT ON UPDATE RESTRICT
+
+ALTER TABLE DISTRICT
+ADD CONSTRAINT Relationship2 FOREIGN KEY (ID_COUNTRY) REFERENCES COUNTRY (ID) ON DELETE RESTRICT ON UPDATE RESTRICT
+~~~ 
+
+
+Borrar tablas creadas
+~~~
+DROP TABLE CITY; 
+DROP TABLE DISTRICT;
+DROP TABLE COUNTRY;
+~~~
 
 # DML (Data Manipulation Language)-(Releacionado con interacción con datos)
 ### Definición:  
